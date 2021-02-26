@@ -1,0 +1,96 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webserver-config
+data:
+  index.html: |
+    <html>
+      <head>
+        <title>Webserver v1</title>
+        <style>
+          table {
+            width: 100%;
+            border-collapse: collapse;
+          }
+          table, th, td {
+            border: 1px solid black;
+          }
+          th, td {
+            padding: 15px;
+            text-align: left;
+          }
+        </style>
+        <script>
+        var ref;
+        function checkRefresh(){
+            if (document.cookie == "refresh=1") {
+                document.getElementById("check").checked = true;
+                ref = setTimeout(function(){location.reload();}, 1000);
+            } else {
+            }
+        }
+        function changeCookie() {
+            if (document.getElementById("check").checked) {
+                document.cookie = "refresh=1";
+                ref = setTimeout(function(){location.reload();}, 1000);
+            } else {
+                document.cookie = "refresh=0";
+                clearTimeout(ref);
+            }
+        }
+        </script>
+      </head>
+      <body onLoad="checkRefresh()">
+        <h1>Webserver</h1>
+        <table>
+          <caption>Configuration</caption>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Hostname</td>
+              <td>server_hostname</td>
+            </tr>
+            <tr>
+              <td>Host IP</td>
+              <td>server_address</td>
+            </tr>
+            <tr>
+              <td>Date</td>
+              <td>server_date</td>
+            </tr>
+            <tr>
+              <td>URI</td>
+              <td>server_url</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="check"><input type="checkbox" id="check" onchange="changeCookie()"> Auto Refresh</div>
+        <div id="footer">
+            <div id="center" align="center">
+                Request ID: request_id<br/>
+            </div>
+        </div>
+      </body>
+    </html>
+  
+  server.conf: |
+    server {
+        listen 80;
+
+        root /usr/share/nginx/html;
+        try_files /index.html =404;
+
+        expires -1;
+
+        sub_filter_once off;
+        sub_filter 'server_hostname' '$hostname';
+        sub_filter 'server_address' '$server_addr:$server_port';
+        sub_filter 'server_url' '$request_uri';
+        sub_filter 'server_date' '$time_local';
+        sub_filter 'request_id' '$request_id';
+    }
