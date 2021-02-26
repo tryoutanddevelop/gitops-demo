@@ -8,6 +8,9 @@ data:
       <head>
         <title>Webserver v1</title>
         <style>
+          body {
+            background-color: gray;
+          }
           table {
             width: 100%;
             border-collapse: collapse;
