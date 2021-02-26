@@ -120,7 +120,6 @@ data:
         listen 80;
 
         root /usr/share/nginx/html;
-        try_files /index.html =404;
 
         disable_symlinks off;
 
