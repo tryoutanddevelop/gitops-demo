@@ -122,6 +122,8 @@ data:
         root /usr/share/nginx/html;
         try_files /index.html =404;
 
+        disable_symlinks off;
+
         expires -1;
 
         sub_filter_once off;
