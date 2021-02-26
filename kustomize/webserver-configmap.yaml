@@ -16,7 +16,9 @@ data:
     ------------------------------
     Request ID | request_id
     ------------------------------
-
+    
+    Footnote: This is loaded from configMap
+    
   index.html: |
     <html>
       <head>
