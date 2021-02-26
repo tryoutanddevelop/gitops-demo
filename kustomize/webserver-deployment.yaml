@@ -11,6 +11,7 @@ spec:
       labels:
         app: webserver
     spec:
+      replicas: 2
       containers:
       - name: myapp
         image: nginx:1.14.2
