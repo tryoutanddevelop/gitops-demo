@@ -127,6 +127,7 @@ data:
         expires -1;
 
         sub_filter_once off;
+        sub_filter_types text/html text/plain;
         sub_filter 'server_hostname' '$hostname';
         sub_filter 'server_address' '$server_addr:$server_port';
         sub_filter 'server_url' '$request_uri';
