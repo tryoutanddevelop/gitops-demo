@@ -28,8 +28,25 @@ data:
         </style>
         <script>
         var ref;
+        function isRefreshEnabled() {
+          var refresh = localStorage.getItem("refresh");
+          if (refresh) {
+            return parseInt(refresh, 10) === 1;
+          }
+          
+          return false;
+        }
+        function enableRefresh() {
+          setRefresh("1");
+        }
+        function disableRefresh() {
+          setRefresh("0");
+        }
+        function setRefresh(refresh) {
+          localStorage.setItem("refresh", refresh);
+        }
         function checkRefresh(){
-            if (document.cookie == "refresh=1") {
+            if (isRefreshEnabled()) {
                 document.getElementById("check").checked = true;
                 ref = setTimeout(function(){location.reload();}, 1000);
             } else {
@@ -37,10 +54,10 @@ data:
         }
         function changeCookie() {
             if (document.getElementById("check").checked) {
-                document.cookie = "refresh=1";
+                enableRefresh();
                 ref = setTimeout(function(){location.reload();}, 1000);
             } else {
-                document.cookie = "refresh=0";
+                disableRefresh()
                 clearTimeout(ref);
             }
         }
