@@ -52,7 +52,7 @@ data:
             } else {
             }
         }
-        function changeCookie() {
+        function changeRefresh() {
             if (document.getElementById("check").checked) {
                 enableRefresh();
                 ref = setTimeout(function(){location.reload();}, 1000);
@@ -92,7 +92,7 @@ data:
             </tr>
           </tbody>
         </table>
-        <div class="check"><input type="checkbox" id="check" onchange="changeCookie()"> Auto Refresh</div>
+        <div class="check"><input type="checkbox" id="check" onchange="changeRefresh()"> Auto Refresh</div>
         <div id="footer">
             <div id="center" align="center">
                 Request ID: request_id<br/>
