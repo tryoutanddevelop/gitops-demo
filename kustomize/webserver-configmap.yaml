@@ -9,7 +9,7 @@ data:
         <title>Webserver v1</title>
         <style>
           body {
-            background-color: blue;
+            background-color: white;
           }
           table {
             width: 100%;
