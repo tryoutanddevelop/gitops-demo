@@ -1,0 +1,12 @@
+Welcome to Plain Text Response
+------------------------------
+Hostname   | server_hostname
+------------------------------
+Host IP    | server_address
+------------------------------
+Date       | server_date
+------------------------------
+URI        | server_url
+------------------------------
+Request ID | request_id
+------------------------------
