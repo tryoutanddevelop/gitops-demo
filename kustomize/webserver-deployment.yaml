@@ -34,23 +34,3 @@ spec:
             port: 80
           initialDelaySeconds: 2
           periodSeconds: 2
-        volumeMounts:
-        - name: index-volume
-          mountPath: /usr/share/nginx/html
-        - name: config-volume
-          mountPath: /etc/nginx/conf.d
-      volumes:
-      - name: index-volume
-        configMap:
-          name: webserver-config
-          items:
-          - key: index.html
-            path: index.html
-          - key: plain.txt
-            path: plain.txt
-      - name: config-volume
-        configMap:
-          name: webserver-config
-          items:
-          - key: server.conf
-            path: server.conf
