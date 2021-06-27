@@ -1,0 +1,4 @@
+kustomize/
+.git
+buildspec.yml
+README.md
