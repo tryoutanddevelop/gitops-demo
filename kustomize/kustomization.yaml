@@ -5,5 +5,5 @@ resources:
   - webserver-service.yaml
 images:
   - name: nginx
-    newName: 974362571593.dkr.ecr.us-west-1.amazonaws.com/webserver # {"$imagepolicy": "flux-system:gitops-demo:name"}
-    newTag: demo-3755bde-1624809421 # {"$imagepolicy": "flux-system:gitops-demo:tag"}
+    newName: 285078527605.dkr.ecr.eu-west-1.amazonaws.com/webserver # {"$imagepolicy": "flux-system:gitops-demo:name"}
+    newTag: demo-7d83004-1625029186 # {"$imagepolicy": "flux-system:gitops-demo:tag"}
